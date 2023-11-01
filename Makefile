@@ -59,14 +59,13 @@ export ARCH_SRCS	 = cdcacm.c  usart.c
 # string
 #
 TARGETS	= \
+	picofusion_h20_bl \
 	aerofcv1_bl \
 	auavx2v1_bl \
 	avx_v1_bl \
 	crazyflie21_bl \
 	crazyflie_bl \
 	cube_f4_bl \
-	fmuk66e_bl \
-	fmuk66v3_bl \
 	kakutef7_bl \
 	mindpxv2_bl \
 	modalai_fc_v1_bl \
@@ -103,12 +102,6 @@ clean:
 #
 # Specific bootloader targets.
 #
-
-fmuk66v3_bl: $(MAKEFILE_LIST) $(LIBKINETIS)
-	${MAKE} ${MKFLAGS} -f  Makefile.k66 TARGET_HW=FMUK66_V3  LINKER_FILE=kinetisk66.ld TARGET_FILE_NAME=$@
-
-fmuk66e_bl: $(MAKEFILE_LIST) $(LIBKINETIS)
-	${MAKE} ${MKFLAGS} -f  Makefile.k66 TARGET_HW=FMUK66_E  LINKER_FILE=kinetisk66.ld TARGET_FILE_NAME=$@
 
 auavx2v1_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 	${MAKE} ${MKFLAGS} -f  Makefile.f4 TARGET_HW=AUAV_X2V1  LINKER_FILE=stm32f4.ld TARGET_FILE_NAME=$@
@@ -209,6 +202,9 @@ aerofcv1_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 
 atl_mantis_edu_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 	${MAKE} ${MKFLAGS} -f  Makefile.f7 TARGET_HW=ATL_MANTIS_EDU LINKER_FILE=stm32f7.ld TARGET_FILE_NAME=$@
+
+picofusion_h20_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
+	${MAKE} ${MKFLAGS} -f  Makefile.f4 TARGET_HW=PICOFUSION_H20 LINKER_FILE=stm32f4.ld TARGET_FILE_NAME=$@
 
 #
 # Show sizes

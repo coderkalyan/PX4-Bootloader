@@ -171,9 +171,12 @@ static void board_init(void);
 /* standard clocking for all F4 boards */
 static const struct rcc_clock_scale clock_setup = {
 	.pllm = OSC_FREQ,
-	.plln = 336,
-	.pllp = 2,
-	.pllq = 7,
+	.plln = 384, //336,
+	// .plln = 336,
+	// .pllp = 2,
+	.pllp = 4,
+	// .pllq = 7,
+	.pllq = 8,
 #if defined(STM32F446) || defined(STM32F469)
 	.pllr = 2,
 #endif
@@ -182,8 +185,10 @@ static const struct rcc_clock_scale clock_setup = {
 	.ppre2 = RCC_CFGR_PPRE_DIV_2,
 	.power_save = 0,
 	.flash_config = FLASH_ACR_ICEN | FLASH_ACR_DCEN | FLASH_ACR_LATENCY_5WS,
-	.apb1_frequency = 42000000,
-	.apb2_frequency = 84000000,
+	// .apb1_frequency = 42000000,
+	.apb1_frequency = 48000000,
+	// .apb2_frequency = 84000000,
+	.apb2_frequency = 96000000,
 };
 
 /* State of an inserted USB cable */
